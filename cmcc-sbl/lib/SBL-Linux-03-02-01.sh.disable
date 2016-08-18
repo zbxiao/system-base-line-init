@@ -1,0 +1,15 @@
+#!/bin/sh
+#  日志审计-Syslog.conf的配置审核
+#  
+#  执行：more /etc/syslog.conf，查看是否设置了下列项：
+#  kern.warning;*.err;authpriv.none          @loghost
+#  *.info;mail.none;authpriv.none;cron.none  @loghost
+#  *.emerg                                   @loghost
+#  local7.*                                  @loghost
+#  
+#  若未设置，则低于安全要求；
+#  
+#  补充操作说明
+#  建议配置专门的日志服务器，加强日志信息的异地同步备份
+
+#  未安排统一的日志服务器,该基线暂不操作

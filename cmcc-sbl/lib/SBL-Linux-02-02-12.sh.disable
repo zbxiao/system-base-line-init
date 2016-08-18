@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+#  帐号与口令-关闭不必要的服务
+#  "使用命令“who -r”查看当前init级别
+#  使用命令“chkconfig --list <服务名>”查看所有服务的状态
+#  
+#  chkconfig  --list 检查rlogin、rsh、login是否启动。
+#  
+#  chkconfig  --list snmpd  显示snmpd服务是否在系统启动时启动
+#  
+#  chkconfig  --list sendmail 显示sendmail服务是否在系统启动时启动
+#  
+#  chkconfig --list 检查postfix、rsyncd服务是否启动。"
+#  "若有不必要的系统在当前级别下为on，则低于安全要求
+#  
+#  补充说明：
+#  使用命令“chkconfig --level <init级别> <服务名> on|off|reset”设置服务在个init级别下开机是否启动
+#  "
+#
+# 已在 lib/change_services.sh 里操作
+#  

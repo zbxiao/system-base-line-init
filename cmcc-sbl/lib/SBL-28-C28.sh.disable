@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+#  允许接收、转发源路由数据包
+#  
+#  将/proc/sys/net/ipv4/ conf/eth(0/1)/accept_source_route和lo/accept_source_route的值设置为0：
+#  echo 0 >/proc/sys/net/ipv4/conf/eth(0/1)/accept_source_route
+#  echo 0 >/proc/sys/net/ipv4/conf/lo/accept_source_route
+#  
+
+# 见 lib/set_sysctl.sh
