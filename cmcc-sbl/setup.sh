@@ -2,7 +2,6 @@
 current_dir=`dirname $0`
 current_dir=`readlink -f $current_dir`
 
-
 cd ${current_dir} || exit 127
 for i in ./lib/*.sh ; do
     if [ -r "$i" ]; then
@@ -30,3 +29,5 @@ set_limits
 set_passwd_expire
 set_sysctl
 set_tmout
+
+yum -y install vim lrzsz make gcc*  > /dev/null 2>&1
