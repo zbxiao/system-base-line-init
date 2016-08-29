@@ -14,13 +14,21 @@
 # 不存在空口令帐号
 
 #change_pass_days() {
-SBL_Linux_02_01_01() {
-  /usr/bin/chage -M 90 admin
+set_passwd_expire() {
+echo -n "Set passwd expire:"
+#  /usr/bin/chage -M 90 admin
   cp /etc/login.defs ./backup/
   sed -i -e 's/^\(PASS_MAX_DAYS\).*/\1  90/' \
          -e 's/^\(PASS_MIN_DAYS\).*/\1  0/'  \
          -e 's/^\(PASS_MIN_LEN\).*/\1   8/'   \
          -e 's/^\(PASS_WARN_AGE\).*/\1  7/'  \
       /etc/login.defs
+if [ $? -ne 0 ] ;then
+    failure
+    echo
+else
+	success
+	echo
+fi
 }
 

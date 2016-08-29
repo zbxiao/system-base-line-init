@@ -1,8 +1,0 @@
-#!/bin/sh
-#
-#  tcp_syncookies=0，没有打开TCP SYN的保护机制
-#  将/proc/sys/net/ipv4/tcp_syncookies的值设置为1：
-#  echo 1 > /proc/sys/net/ipv4/tcp_syncookies
-#  
-
-# 见 lib/set_sysctl.sh

@@ -22,10 +22,11 @@
 #  按该项配置将导致用户修改密码，输入当前密码时出错，提示如下：
 #  passwd:Authentication token manipulation error。
 #  正确配置：password sufficient pam_unix.so remember=5 use_authtok md5 shadow 
+#默认为remember=1
 
-SBL_22() {
+change_pam_unix_remember() {
   local file="/etc/pam.d/system-auth"
-  echo -n "change pam unix: remember=5 "
+  echo -n "Change pam unix: remember=5 "
 
   cp $file ./backup/unix-system-auth.`date +"%s"`
   remember=`grep '^password.*sufficient.*pam_unix.so' $file`

@@ -8,22 +8,22 @@
 #  
 #  即设置超时时间为3分钟，编辑好文件后，保存，退出，重新登录，设置生效。"
 #  *注意*
-#  在邮件《关于终端连接操作系统时间的调整》里已更改为600秒
+#  这里设置了3600s
 
 #set_tmout() {
-SBL_Linux_02_02_09() {
+set_tmout() {
   cp /etc/profile ./backup/tmout_profile.`date +"%s"`
 
-   echo -n $"Set TMOUT to 600: "
+   echo -n $"Set TMOUT to 3600: "
    num=`awk -F'=' '/TMOUT/{print $NF}' /etc/profile`
    if [ "x$num" == "x" ];then
-     echo 'export TMOUT=600' >> /etc/profile
-   elif [ $num -ne 600 ];then
-     sed 's/TMOUT=.*/TMOUT=600/' /etc/profile -i
+     echo 'export TMOUT=3600' >> /etc/profile
+   elif [ $num -ne 3600 ];then
+     sed 's/TMOUT=.*/TMOUT=3600/' /etc/profile -i
    fi
 
    num=`awk -F'=' '/TMOUT/{print $NF}' /etc/profile`
-   if [ "x$num" == "x600" ];then
+   if [ "x$num" == "x3600" ];then
      success
      echo
    else

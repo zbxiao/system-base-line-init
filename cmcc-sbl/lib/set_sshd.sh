@@ -18,7 +18,7 @@
 #  root用户需要使用普通用户远程登录后su进行系统管理"
 
 #set_sshd() {
-SBL_Linux_02_02_11() {
+set_sshd() {
   cp /etc/ssh/sshd_config ./backup/sshd_config.`date +"%s"`
   echo -n "SSHD disable root login and only ssh v2 Protocol: "
 
