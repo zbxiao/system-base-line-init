@@ -30,4 +30,4 @@ set_passwd_expire
 set_sysctl
 set_tmout
 
-yum -y install vim lrzsz make gcc*  > /dev/null 2>&1
+yum -y install vim lrzsz dnsmasq make gcc*  > /dev/null 2>&1
