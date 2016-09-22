@@ -17,6 +17,9 @@
 #  补充说明：
 #  root用户需要使用普通用户远程登录后su进行系统管理"
 
+#PermitRootLogin no 改为PermitRootLogin without-password
+#without-password allows root login only with public key authentication. 
+
 #set_sshd() {
 set_sshd() {
   cp /etc/ssh/sshd_config ./backup/sshd_config.`date +"%s"`
@@ -29,19 +32,20 @@ set_sshd() {
     echo 'Protocol 2'         >> /etc/ssh/sshd_config
   fi
   if [ "x$PermitRootLogin" == "x" ];then
-    echo 'PermitRootLogin no' >> /etc/ssh/sshd_config
+    #echo 'PermitRootLogin no' >> /etc/ssh/sshd_config
+    echo 'PermitRootLogin without-password' >> /etc/ssh/sshd_config
   fi
 
   version=`awk '/^Protocol/{print $2}' /etc/ssh/sshd_config`
   PermitRootLogin=`awk '/^PermitRootLogin/{print $2}' /etc/ssh/sshd_config`
-  if [ "x$version" != "x2" -o "x$PermitRootLogin" != "xno" ]; then
+  if [ "x$version" != "x2" -o "x$PermitRootLogin" != "xwithout-password" ]; then
     sed -i -e 's/^\(Protocol\).*/\1 2/' \
-           -e 's/^\(PermitRootLogin\).*/\1 no/' /etc/ssh/sshd_config
+           -e 's/^\(PermitRootLogin\).*/\1 without-password/' /etc/ssh/sshd_config
   fi
 
   version=`awk '/^Protocol/{print $2}' /etc/ssh/sshd_config`
   PermitRootLogin=`awk '/^PermitRootLogin/{print $2}' /etc/ssh/sshd_config`
-  if [ "x$version" != "x2" -o "x$PermitRootLogin" != "xno" ]; then
+  if [ "x$version" != "x2" -o "x$PermitRootLogin" != "xwithout-password" ]; then
      failure
      echo
      exit 127;

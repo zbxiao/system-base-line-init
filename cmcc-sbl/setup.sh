@@ -30,4 +30,12 @@ set_passwd_expire
 set_sysctl
 set_tmout
 
+read -n1 -p "Is this a redis server[Y/N]?" redis_status
+case $redis_status in
+	Y|y)
+		echo "vm.overcommit_memory=1" >> /etc/sysctl.conf && echo "set vm.overcommit_memory=1 success" || echo "set vm.overcommit_memory=1 fail"
+	*)
+		echo "ok,pass vm.overcommit_memory "
+esac
+
 yum -y install vim lrzsz dnsmasq make gcc*  > /dev/null 2>&1
