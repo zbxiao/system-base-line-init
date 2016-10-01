@@ -2,7 +2,7 @@
 #腾讯云服务器会使用腾讯内部的yum，所以不用更改；其他独立服务器使用阿里的yum源
 change_yum() {
      iftencent=`grep 'mirrors.tencentyun.com' /etc/yum.repos.d/CentOS-Base.repo |wc -l`
-     releasever=`cat /etc/redhat-release|awk -F'[. ]' '{print $4}'`
+     releasever=`cat /etc/redhat-release|awk -F'[.]' '{print $1}'|tr -d [:alpha:][:blank:]`
      #echo $releasever $iftencent
 
      if [ $iftencent -eq 0 ]; then
